@@ -1,0 +1,22 @@
+Users
+
+PUBLIC - POST /api/v1/users - Create a new user.
+PRIVATE - DELETE /api/v1/users - Delete a registered user.
+
+
+Auth
+
+PRIVATE - GET /api/v1/auth - Get a user from their token.
+PRIVATE - POST /api/v1/auth - Authenticate user and get token. 
+
+
+Projects
+
+PRIVATE - POST /api/v1/projects - Create a new project.
+PRIVATE - POST /api/v1/projects/:id - Get a project by ID.
+PRIVATE - PUT /api/v1/projects/users/:user - Add a user to the project.
+PRIVATE - DELETE /api/v1/projects/users/:user - Add a user to the project.
+
+
+Issues TODO
+
