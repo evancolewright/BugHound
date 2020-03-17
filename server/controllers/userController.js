@@ -57,7 +57,6 @@ exports.registerUser = async (req, res) => {
 // Delete User
 
 exports.deleteUser = async (req, res) => {
-    console.log(req.user)
     await User.deleteOne({ _id: req.user.id });
     res.status(200).json({
         message: 'User Deleted!'
