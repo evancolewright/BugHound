@@ -7,6 +7,7 @@ const app = express();
 
 const usersRoute = require('./routes/api/userRoutes');
 const authRoute = require('./routes/api/authRoutes');
+const projectRoute = require('./routes/api/projectRoutes')
 
 //Set up our origin headers
 app.use(cors({
@@ -22,6 +23,7 @@ app.use(express.json({ limit: '15kb' }));
 // Mount Routers
 app.use('/api/v1/users', usersRoute)
 app.use('/api/v1/auth', authRoute)
+app.use('/api/v1/project', projectRoute)
 
 // ROOT
 app.get('/', (req,res) => {

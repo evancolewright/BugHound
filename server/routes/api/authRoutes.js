@@ -1,6 +1,6 @@
 const express = require("express");
 const {
-  validateRegister,
+  validateRegister, validateLogin,
   validate
 } = require("../../middleware/validationMiddleware");
 const authController = require("../../controllers/authController");
@@ -16,6 +16,6 @@ router.get("/", authMiddleware, authController.getUser);
 // @route    POST api/auth
 // @desc     Authenticate a user.
 // @access   Private
-router.post('/', validateRegister(), validate, authController.authUser);
+router.post('/', validateLogin(), validate, authController.authUser);
 
 module.exports = router;

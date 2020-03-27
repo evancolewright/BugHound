@@ -7,7 +7,7 @@ const projectSchema = mongoose.Schema({
   },
   company: {
     type: String,
-    required: false
+    required: true
   },
   admin: {
     type: mongoose.Schema.Types.ObjectId,
@@ -26,11 +26,12 @@ const projectSchema = mongoose.Schema({
         required: true
       },
       status: {
+        type: String,
         enum: ["pending", "completed"],
         default: "pending"
       },
       priority: {
-        required: true,
+        type: String,
         enum: ["low", "medium", "high"]
       },
       poster: {
