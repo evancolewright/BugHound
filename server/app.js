@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const cors = require('cors');
+
 const app = express();
 
 const usersRoute = require('./routes/api/userRoutes');
@@ -29,7 +30,7 @@ app.use('/api/v1/project', projectRoute);
 
 // ROOT
 app.get('/', (req, res) => {
-  res.json({ message: 'hello' });
+  res.json({ message: 'Welcome to the BugHound API!', version: '1.0' });
 });
 
 // 404
