@@ -4,22 +4,19 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 
 // Get User by token
-
 exports.getUser = async (req, res) => {
   try {
-    const user = await User.findById(req.user.id).select('-password');
+    const user = await User.findById(req.user.id).select("-password");
     res.json(user);
   } catch (err) {
     console.log(err);
   }
 };
 
-// Auth User
-
+// Authenticate User
 exports.authUser = async (req, res) => {
   const { email, password } = req.body;
   try {
-    
     let user = await User.findOne({ email });
 
     if (!user) {
@@ -34,13 +31,13 @@ exports.authUser = async (req, res) => {
 
     const payload = {
       user: {
-        id: user.id
-      }
+        id: user.id,
+      },
     };
 
     jwt.sign(
       payload,
-     process.env.jwtSecret,
+      process.env.jwtSecret,
       { expiresIn: 360000 },
       (err, token) => {
         if (err) throw err;

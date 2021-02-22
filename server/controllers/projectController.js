@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const Project = require("../models/Project");
 
+// Create a new project
 exports.createProject = async (req, res) => {
   const { name, company } = req.body;
 
@@ -12,9 +13,9 @@ exports.createProject = async (req, res) => {
     issues: [
       {
         title: "Persistence task",
-        poster: req.user.id
-      }
-    ]
+        poster: req.user.id,
+      },
+    ],
   });
 
   await project.save();
@@ -39,7 +40,7 @@ exports.deleteByProjectID = async (req, res) => {
     const project = await Project.findById(req.params.id);
     if (!project) {
       return res.status(404).json({
-        error: "Project not found!"
+        error: "Project not found!",
       });
     }
     if (project.user.toString() !== req.user.id) {
@@ -65,13 +66,13 @@ exports.editProject = async (req, res) => {
   // Make sure user is admin!
   if (userID !== project.admin.toString()) {
     res.json({
-      error: "You must be an admin to make changes to the project!"
+      error: "You must be an admin to make changes to the project!",
     });
   }
 
   const entries = Object.entries(req.body);
 
-  entries.forEach(entry => {
+  entries.forEach((entry) => {
     const key = entry[0];
     const value = entry[1];
     project[key] = value;

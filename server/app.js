@@ -7,12 +7,14 @@ const app = express();
 
 const usersRoute = require('./routes/api/userRoutes');
 const authRoute = require('./routes/api/authRoutes');
-const projectRoute = require('./routes/api/projectRoutes')
+const projectRoute = require('./routes/api/projectRoutes');
 
-//Set up our origin headers
-app.use(cors({
-    origin: process.env.CORS_ORIGIN
-}));
+// Set up our origin headers
+app.use(
+  cors({
+    origin: process.env.CORS_ORIGIN,
+  }),
+);
 
 // Security and body parser middleware
 app.use(helmet());
@@ -21,18 +23,18 @@ app.use(mongoSanitize());
 app.use(express.json({ limit: '15kb' }));
 
 // Mount Routers
-app.use('/api/v1/users', usersRoute)
-app.use('/api/v1/auth', authRoute)
-app.use('/api/v1/project', projectRoute)
+app.use('/api/v1/users', usersRoute);
+app.use('/api/v1/auth', authRoute);
+app.use('/api/v1/project', projectRoute);
 
 // ROOT
-app.get('/', (req,res) => {
-    res.json({message: 'hello'})
-})
+app.get('/', (req, res) => {
+  res.json({ message: 'hello' });
+});
 
 // 404
 app.all('*', (req, res, next) => {
-    next();
-})
+  next();
+});
 
 module.exports = app;

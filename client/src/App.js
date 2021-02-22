@@ -1,22 +1,21 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-//redux
+// Redux
 import { Provider } from "react-redux";
 import store from "./store";
 
-// components 
+// Components
 
-import Login from './components/auth/Login'
+import Login from "./components/auth/Login";
 
 export default function App() {
   return (
     <Provider>
       <div className="container">
         Welcome to bug hound!
-        <Login/>
-      </div>  
-      
+        <Login />
+      </div>
     </Provider>
   );
 }
